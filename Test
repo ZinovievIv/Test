@@ -9,25 +9,21 @@ class Card(numbers: Map<Int, MutableSet<Int>>) {
 
 }
 
-
 class Person(val name: String) {
     var card: Card = createCards()
+
     fun createCards(): Card {
         var readyCard: MutableMap<Int, MutableSet<Int>> = mutableMapOf()
 
-        for (i in 1..4) {
+        for (i in 1..3) {
             var cardList: MutableSet<Int> = mutableSetOf()
             while (cardList.size < 5) {
                 cardList.add(Random.nextInt(1, 100))
             }
             readyCard[i] = cardList
         }
-        return card
-    }
 
-    fun printCard(numbers: MutableMap<Int, MutableSet<Int>>) {
-        for ((key, value) in numbers) {
-            println("$key = $value")
-        }
+        return Card(readyCard)
+
     }
 }
